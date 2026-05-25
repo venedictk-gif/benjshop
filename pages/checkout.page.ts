@@ -7,7 +7,7 @@ import {Page,Locator} from '@playwright/test';
 Результат: POM для чекаута работает, тест использует POM вместо прямых локаторов.
 */
 export class CheckoutPage {
-    readonly page=Page;
+    readonly page:Page;
     readonly firstNameInput:Locator;
     readonly lastNameInput:Locator;
     readonly countryDropdown:Locator;
