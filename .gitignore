@@ -1,3 +1,7 @@
+#PW
+playwright/.auth/
+test-results/
+reports/
 # Logs
 logs
 *.log
