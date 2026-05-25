@@ -1,0 +1,21 @@
+import {test,expect} from"@playwright/test";
+import {ShopPage} from '../pages/shop.page';
+import products from '../test-data/products.json'
+
+let shopPage : ShopPage;
+
+test.beforeEach(async ({page})=>{
+ shopPage = new ShopPage(page);
+ await shopPage.goto();
+});
+
+test('Добавление товара Боксерская груша в корзину', async ({page})=> {
+    await expect(page).toHaveURL('/shop/');
+    await shopPage.addItemToCart(products.punchingBag.productId);
+    await expect(shopPage.cartBadge).toHaveText('1');
+    await shopPage.goToCart();
+    await expect(page.getByText('Боксерская груша')).toBeVisible();
+    //await page.waitForTimeout(3000);
+    //await page.screenshot({ path: 'cart-debug.png', fullPage: true });
+    //await expect(page.locator('.wc-block-components-product-name')).toContainText('Боксерская груша');
+});

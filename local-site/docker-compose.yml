@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: qauser
+      WORDPRESS_DB_PASSWORD: qapass
+      WORDPRESS_DB_NAME: qadb
+    volumes:
+      - wordpress_data:/var/www/html
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: qadb
+      MYSQL_USER: qauser
+      MYSQL_PASSWORD: qapass
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  wordpress_data:
+  db_data:

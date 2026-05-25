@@ -1,0 +1,30 @@
+{
+  "punchingBag": {
+    "name": "Боксерская груша",
+    "fullDescription": "Обычная груша для бокса",
+    "shortDescription": "Груша",
+    "price": "3999,00 ",
+    "productId":77
+  },
+  "soccerBall": {
+    "name": "Футбольный мяч",
+    "fullDescription": "Мяч для игры в футбол",
+    "shortDescription": "Мяч",
+    "price": "1999",
+    "productId":78
+  },
+    "boxingGloves": {
+    "name": "Боксерские перчатки",
+    "fullDescription": "Перчатки для бокса",
+    "shortDescription": "Перчатки",
+    "price": "1599",
+    "productId":79
+  },
+    "jumpRopes": {
+    "name": "Скакалки",
+    "fullDescription": "Скакалки для прыжков",
+    "shortDescription": "Скакалки для прыжков",
+    "price": "699",
+    "productId":80
+  }
+}

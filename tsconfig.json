@@ -1,0 +1,13 @@
+{
+  "_comment":"Настройка TypeScript-компилятора: строгость проверок, целевая версия JS, откуда брать .ts файлы",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node"], 
+    "outDir": "./dist"
+  },
+  "include": ["**/*.ts"]
+}
