@@ -13,7 +13,8 @@ export default defineConfig({
     ['json', { outputFile: 'reports/results.json' }]
   ],
   use: {
-    baseURL: 'http://localhost:8080',
+    baseURL: 'https://localhost',
+    ignoreHTTPSErrors: true,
     screenshot: 'off',
     video: 'off',
     trace: 'on-first-retry',
