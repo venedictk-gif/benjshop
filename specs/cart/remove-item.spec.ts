@@ -1,19 +1,9 @@
-import {test,expect} from"@playwright/test";
-import {ShopPage} from '../../pages/shop.page';
+import {test,expect} from '../../fixtures/shop.fixture';
 import {CartPage} from '../../pages/cart.page';
 import products from '../../test-data/products.json'
 
-
-/*
-2. Написать тест на удаление товара из корзины 
-Конкретно: Добавить два товара в корзину, удалить один, проверить, что остался один, проверить счётчик.
-Результат: Тест на удаление работает.
-*/
-
-test('Удаление товара из корзины', async ({page}) => {
-    const shopPage = new ShopPage(page);
+test('Удаление товара из корзины', async ({shopPage, page}) => {
     const cartPage = new CartPage(page);
-    await shopPage.goto();
     await shopPage.addItemToCart(77);
     await page.waitForTimeout(1000);
     await shopPage.addItemToCart(78);
@@ -22,4 +12,7 @@ test('Удаление товара из корзины', async ({page}) => {
     await expect(cartPage.cartItems).toHaveCount(2);
     await cartPage.removeItem(products.punchingBag.name);
     await expect(cartPage.cartItems).toHaveCount(1);
+    await page.waitForTimeout(1000);
+    await cartPage.removeItem(products.soccerBall.name);
+    await expect(cartPage.cartItems).toHaveCount(0);
 });

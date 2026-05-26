@@ -1,10 +1,7 @@
-import {test,expect} from"@playwright/test";
-import {ShopPage} from '../../pages/shop.page';
+import {test,expect} from '../../fixtures/shop.fixture';
 
 
-test('Пустая корзина', async ({page})=>{
-    const shopPage = new ShopPage(page);
-    await shopPage.goto();
+test('Пустая корзина', async ({shopPage,page})=>{;
     await shopPage.goToCart();
     await expect(page.getByText('Ваша корзина сейчас пуста!')).toBeVisible();
 });
