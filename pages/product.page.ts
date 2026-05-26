@@ -16,9 +16,8 @@ constructor (page:Page){
     this.addToCart = page.locator('.single_add_to_cart_button');
     this.countInput = page.locator('.wp-block-column .input-text');
 }
-//Добавить методы: goto(productUrl), addToCart(), getPrice().
 async goto(productName:string): Promise<void> {
-    await this.page.goto(`http://localhost:8080/shop/${productName}`)
+    await this.page.goto(`https://localhost/shop/${productName}`)
 }
 async addItemToCart(): Promise<void>{
     await this.addToCart.click();

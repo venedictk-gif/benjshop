@@ -1,11 +1,6 @@
+//Создать POM для страницы оформления заказа
 import {Page,Locator} from '@playwright/test';
 
-/*
-
-4. Создать POM для страницы оформления заказа 
-Конкретно: Создать pages/checkout.page.ts. Локаторы: поля формы (имя, фамилия, адрес, город, индекс, телефон), кнопка «Подтвердить заказ». Методы: fillBillingForm(), placeOrder().
-Результат: POM для чекаута работает, тест использует POM вместо прямых локаторов.
-*/
 export class CheckoutPage {
     readonly page:Page;
     readonly firstNameInput:Locator;

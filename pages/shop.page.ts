@@ -17,7 +17,7 @@ constructor (page:Page) {
     this.cartBadge = page.locator('.wc-block-mini-cart__badge');
 }   
 async goto(): Promise<void> {
-    await this.page.goto('http://localhost:8080/shop/');
+    await this.page.goto('https://localhost/shop/');
 }
 async getProductCount(): Promise<number> {
     return await this.productCard.count();
