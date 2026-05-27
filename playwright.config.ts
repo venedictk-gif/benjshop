@@ -29,6 +29,13 @@ export default defineConfig({
        },
       dependencies: ['setup'],
     },
+      {
+    name: 'api',
+    testDir: './specs/api',
+    use: {
+      baseURL: 'https://petstore.swagger.io/v2',
+    },
+  },
     /*{
       name: 'firefox',
       use: { ...devices['Desktop Firefox']
