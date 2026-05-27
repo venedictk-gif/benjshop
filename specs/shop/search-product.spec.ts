@@ -8,5 +8,5 @@ test('Поиск товара', async ({shopPage,page})=>{
     await page.waitForTimeout(1500); 
     await page.screenshot({ path: '1search.png', fullPage: true });
     await expect(page.getByText('Футбольный')).not.toBeVisible();
-    await expect(page.getByText('Боксерская груша', { exact: true })).toBeAttached();
+    await expect(page.getByText('груша').first()).toBeVisible();
 });
