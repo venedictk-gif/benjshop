@@ -1,4 +1,6 @@
 #PW
+playwright-report/
+reports/
 playwright/.auth/
 test-results/
 reports/
