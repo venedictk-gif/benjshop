@@ -1,38 +1,32 @@
-# BenjShop — E2E Tests
+# BenjShop — E2E & API Tests
 
 ![Playwright Tests](https://github.com/venedictk-gif/benjshop/actions/workflows/playwright.yml/badge.svg)
 
-E2E and API tests for a WooCommerce shop built with **Playwright + TypeScript**.
+Full-featured test automation framework for a WooCommerce shop built with **Playwright + TypeScript**.
+
+## 🎯 Key Features
+
+- **Page Object Model** — clean separation of test logic and UI selectors (Shop, Product, Cart, Checkout pages)
+- **Fixtures** — reusable authentication and shop page setup
+- **Hybrid E2E Tests** — combining API calls (create users, products, orders) with UI interactions
+- **API Testing** — full CRUD for WooCommerce REST API (customers, products, orders)
+- **CI/CD** — GitHub Actions with Playwright on push
+- **Custom Commands** — `fillBillngForm`, `removeItem`, `addItemToCart`, `placeOrder` etc.
+- **Search & Filter Tests** — product search and category filtering
 
 ## 🛠️ Stack
 
 - **Playwright** — browser automation
 - **TypeScript** — type-safe test code
-- **WooCommerce** — e-commerce platform (Docker)
+- **WooCommerce** — e-commerce platform
+- **Docker** — local test environment
 - **GitHub Actions** — CI/CD
-
-## 📦 Project Structure
-benjshop/
-├── specs/ # Test files
-│ ├── shop/ # Shop page tests
-│ ├── cart/ # Cart tests
-│ ├── product/ # Product page & full flow tests
-│ └── api/ # API tests (Petstore)
-├── pages/ # Page Object Models
-├── fixtures/ # Test fixtures
-├── test-data/ # Test data (JSON)
-├── utils/ # Selectors, helpers
-└── playwright.config.ts
-
-
+- **Nginx + SSL** — local HTTPS setup
 ## 🚀 How to Run
-### 1. Install dependencies
+
+### 1. Clone & install
 ```bash
+git clone https://github.com/venedictk-gif/benjshop.git
+cd benjshop
 npm install
 npx playwright install
-
-cd local-site
-docker-compose up -d
-
-npx playwright test
-npx playwright show-report

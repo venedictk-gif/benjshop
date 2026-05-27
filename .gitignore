@@ -5,6 +5,7 @@ playwright/.auth/
 test-results/
 reports/
 #Ssl
+local-site/
 local-site/ssl/
 # Logs
 logs
