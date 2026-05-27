@@ -1,16 +1,19 @@
 import {test, expect} from '@playwright/test';
 
 test('Создание покупателя', async ({request}) => {
+    const random = Math.floor(Math.random() * 100000);
+    const username = `user${random}`;
+    const email = `user${random}@mail.ru`;
     const newCustomer = await request.post('/wp-json/wc/v3/customers', {
     headers: {
       'Authorization': 'Basic Y2tfMzc5YjAyMDVlMzIxMTZiYTY3M2FmOTcxZDVmODFkMzJmYjE2N2UzNTpjc18wMmU1YmQwYWQyNTBmYWViMWVjYThjZjVkZWFhN2U4OTZkZWQwNTlh',
     },
     data: {
-    email: "zigmundFreid@mail.ru",
+    email: email,
     first_name: "Zigmund",
     last_name: "Freid",
     role: 'user',
-    username: 'ZigmundFreid',
+    username: username,
     password: "Zigmund67!",
     confirm_password: "Zigmund67!",
     },
