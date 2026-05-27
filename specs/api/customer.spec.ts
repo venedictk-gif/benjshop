@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import { getAuthHeader } from '../../utils/api';
 
 test('Создание покупателя', async ({request}) => {
     const random = Math.floor(Math.random() * 100000);
@@ -6,7 +7,7 @@ test('Создание покупателя', async ({request}) => {
     const email = `user${random}@mail.ru`;
     const newCustomer = await request.post('/wp-json/wc/v3/customers', {
     headers: {
-      'Authorization': 'Basic Y2tfMzc5YjAyMDVlMzIxMTZiYTY3M2FmOTcxZDVmODFkMzJmYjE2N2UzNTpjc18wMmU1YmQwYWQyNTBmYWViMWVjYThjZjVkZWFhN2U4OTZkZWQwNTlh',
+      'Authorization': getAuthHeader(),
     },
     data: {
     email: email,
@@ -27,7 +28,7 @@ test('Создание покупателя', async ({request}) => {
 test('Запрос покупателя', async ({request})=> {
     const getCustomer = await request.get('/wp-json/wc/v3/customers/5', {
          headers: {
-      'Authorization': 'Basic Y2tfMzc5YjAyMDVlMzIxMTZiYTY3M2FmOTcxZDVmODFkMzJmYjE2N2UzNTpjc18wMmU1YmQwYWQyNTBmYWViMWVjYThjZjVkZWFhN2U4OTZkZWQwNTlh',
+          'Authorization': getAuthHeader(),
     },
   });   
   const body = await getCustomer.json();
@@ -39,7 +40,7 @@ test('Запрос покупателя', async ({request})=> {
 test('Изменение покупателя', async ({request}) => {
     const putCustomer = await request.put('/wp-json/wc/v3/customers/5', {
     headers: {
-      'Authorization': 'Basic Y2tfMzc5YjAyMDVlMzIxMTZiYTY3M2FmOTcxZDVmODFkMzJmYjE2N2UzNTpjc18wMmU1YmQwYWQyNTBmYWViMWVjYThjZjVkZWFhN2U4OTZkZWQwNTlh',
+      'Authorization': getAuthHeader(),
     },
     data: {
     billing: {

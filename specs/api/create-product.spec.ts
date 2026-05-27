@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { getAuthHeader } from '../../utils/api';
 
 test('Создание товара через WooCommerce API', async ({ request }) => {
   const newProduct = await request.post('/wp-json/wc/v3/products', {
     headers: {
-      'Authorization': 'Basic Y2tfMzc5YjAyMDVlMzIxMTZiYTY3M2FmOTcxZDVmODFkMzJmYjE2N2UzNTpjc18wMmU1YmQwYWQyNTBmYWViMWVjYThjZjVkZWFhN2U4OTZkZWQwNTlh',
+      'Authorization': getAuthHeader(),
     },
     data: {
       name: 'Тестовый товар',

@@ -1,9 +1,10 @@
 import {test, expect} from '@playwright/test'
+import { getAuthHeader } from '../../utils/api';
 
 test('Создание заказа', async ({request})=>{
       const newOrder = await request.post('/wp-json/wc/v3/orders', {
     headers: {
-      'Authorization': 'Basic Y2tfMzc5YjAyMDVlMzIxMTZiYTY3M2FmOTcxZDVmODFkMzJmYjE2N2UzNTpjc18wMmU1YmQwYWQyNTBmYWViMWVjYThjZjVkZWFhN2U4OTZkZWQwNTlh',
+      'Authorization': getAuthHeader(),
     }
   });
   
@@ -17,7 +18,7 @@ test('Создание заказа', async ({request})=>{
 test('Запрос заказа', async ({request})=> {
     const getOrder = await request.get('/wp-json/wc/v3/orders/114', {
          headers: {
-      'Authorization': 'Basic Y2tfMzc5YjAyMDVlMzIxMTZiYTY3M2FmOTcxZDVmODFkMzJmYjE2N2UzNTpjc18wMmU1YmQwYWQyNTBmYWViMWVjYThjZjVkZWFhN2U4OTZkZWQwNTlh',
+          'Authorization': getAuthHeader(),
     },
   });   
   const body = await getOrder.json();
