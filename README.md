@@ -22,11 +22,18 @@ Full-featured test automation framework for a WooCommerce shop built with **Play
 - **Docker** — local test environment
 - **GitHub Actions** — CI/CD
 - **Nginx + SSL** — local HTTPS setup
-## 🚀 How to Run
 
+## 🚀 How to Run
 ### 1. Clone & install
 ```bash
 git clone https://github.com/venedictk-gif/benjshop.git
 cd benjshop
 npm install
 npx playwright install
+### 2. Configure
+Copy `.env.example` to `.env` and fill in your WooCommerce API keys.
+### Run specific tests
+```bash
+npx playwright test specs/shop/add-to-cart.spec.ts
+npx playwright test specs/api/
+npx playwright test --project=api
