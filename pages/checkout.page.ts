@@ -14,6 +14,7 @@ export class CheckoutPage {
     readonly addressBillCheck:Locator;
     readonly orderButton:Locator
     readonly orderConfirmButton:Locator;
+    readonly changeAddressButton:Locator
 
 constructor (page:Page) {
     this.page=page;
@@ -28,6 +29,7 @@ constructor (page:Page) {
     this.orderButton=page.locator('.wc-block-components-button');
     this.orderConfirmButton=page.getByRole('button', { name: 'Оформить заказ' })
     this.addressBillCheck=page.locator('#checkbox-control-1')
+    this.changeAddressButton=page.locator('.wc-block-components-address-card__edit');
 }
 async fillBillngForm(firstName:string,lastName:string,option:string,address:string,city:string,region:string,index:string,phone:string): Promise<void>{
   await this.firstNameInput.fill(firstName);
