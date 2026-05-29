@@ -27,21 +27,29 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'],
         storageState: 'playwright/.auth/user.json'
        },
-      dependencies: ['setup'],
+    dependencies: ['setup'],
+    },
+    {
+    name: 'mobile-chrome',
+    use: { ...devices['iPhone 12'],
+      storageState: 'playwright/.auth/user.json' },
+    dependencies: ['setup'],
+    testMatch: '*mobile*.spec.ts',
     },
       {
     name: 'api',
     testDir: './specs/api',
     use: {
-      baseURL: 'https://petstore.swagger.io/v2',
+      baseURL: 'https://petstore.swagger.io',
     },
   },
-    /*{
+    {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox']
+      use: { ...devices['Desktop Firefox'],
         storageState: 'playwright/.auth/user.json'
-       }
+       },
         dependencies: ['setup'],
-    },*/
+      grep: /@smoke/,
+    },
   ],
 });

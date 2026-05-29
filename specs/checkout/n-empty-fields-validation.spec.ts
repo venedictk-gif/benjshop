@@ -2,7 +2,7 @@ import {test,expect} from '../../fixtures/shop.fixture'
 import { CheckoutPage } from '../../pages/checkout.page'
 import { CartPage } from '../../pages/cart.page';
 
-test('Валидация ошибок у формы', async ({shopPage, page})=>{
+test('Валидация ошибок у формы @smoke', async ({shopPage, page})=>{
   const checkoutPage = new CheckoutPage(page);
   const cartPage = new CartPage(page)
   await expect(page).toHaveURL(/shop/);

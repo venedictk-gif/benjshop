@@ -9,7 +9,7 @@ test.beforeEach(async ({page})=>{
  await shopPage.goto();
 });
 
-test('Добавление товара Боксерская груша в корзину', async ({page})=> {
+test('Добавление товара Боксерская груша в корзину @smoke', async ({page})=> {
     await expect(page).toHaveURL('/shop/');
     await shopPage.addItemToCart(products.punchingBag.productId);
     await expect(shopPage.cartBadge).toHaveText('1');

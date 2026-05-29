@@ -3,7 +3,7 @@ import {ProductPage} from '../../pages/product.page';
 import {CheckoutPage} from '../../pages/checkout.page';
 import products from '../../test-data/products.json'
 
-test('Проверка страницы товара', async ({shopPage,page})=> {
+test('Проверка страницы товара @smoke', async ({shopPage,page})=> {
     const productPage = new ProductPage(page);
     const checkoutPage = new CheckoutPage(page);
     await shopPage.open(77)
@@ -14,6 +14,5 @@ test('Проверка страницы товара', async ({shopPage,page})=>
     await expect(page.getByText('Боксерская груша')).toBeVisible();
     await page.locator('.wc-block-components-button').click();
     await checkoutPage.addressBillCheck.check();
-    //await checkoutPage.fillBillngForm('Андрей','Бутов','Россия','ул. Фехтовальщиков, д. 5','Жуковский','Рязанская область','1234','71231231212');
     await page.getByRole('button', { name: 'Оформить заказ' }).click();
 });

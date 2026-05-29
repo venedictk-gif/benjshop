@@ -7,7 +7,7 @@ import { CartPage } from '../../pages/cart.page';
 import { CheckoutPage } from '../../pages/checkout.page';
 import { ProductPage } from '../../pages/product.page';
 
-test('Full flow', async ({request,shopPage,page, context})=> {
+test('Full flow @smoke', async ({request,shopPage,page, context})=> {
     const random = Math.floor(Math.random() * 100000);
     const username = `user${random}`;
     const email = `user${random}@mail.ru`;

@@ -2,7 +2,7 @@ import {test,expect} from '../../fixtures/shop.fixture';
 import {CartPage} from '../../pages/cart.page';
 import products from '../../test-data/products.json'
 
-test('Удаление товара из корзины', async ({shopPage, page}) => {
+test('Удаление товара из корзины @regression', async ({shopPage, page}) => {
     const cartPage = new CartPage(page);
     await shopPage.addItemToCart(77);
     await page.waitForTimeout(1000);

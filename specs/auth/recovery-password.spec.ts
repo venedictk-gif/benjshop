@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test'
 import users from '../../test-data/users.json' 
 
-test('Неверные данные при авторизации', async ({page, context})=>{
+test('Восстановление пароля @smoke @regression', async ({page, context})=>{
     await context.clearCookies();
     await page.goto('https://localhost/wp-login.php');
     await page.locator('.wp-login-lost-password').click();

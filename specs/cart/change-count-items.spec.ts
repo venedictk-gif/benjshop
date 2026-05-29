@@ -1,7 +1,7 @@
 import {test,expect} from '../../fixtures/shop.fixture';
 import {CartPage} from '../../pages/cart.page';
 
-test('Именение количества товара', async ({shopPage,page})=>{
+test('Именение количества товара @regression', async ({shopPage,page})=>{
     const cartPage = new CartPage(page);
     await shopPage.addItemToCart(77);
     await page.waitForTimeout(1000);

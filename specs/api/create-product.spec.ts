@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { getAuthHeader } from '../../utils/api';
 
-test('Создание товара через WooCommerce API', async ({ request }) => {
+test('Создание товара через WooCommerce API ', async ({ request }) => {
   const newProduct = await request.post('/wp-json/wc/v3/products', {
     headers: {
       'Authorization': getAuthHeader(),
