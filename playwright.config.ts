@@ -38,7 +38,7 @@ export default defineConfig({
     },
       {
     name: 'api',
-    testDir: './specs/api',
+    testDir: './specs/api-pet',
     use: {
       baseURL: 'https://petstore.swagger.io',
     },
