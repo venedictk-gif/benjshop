@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { request } from 'playwright';
 
 
-test('Создание сущности', async () => {
+test('Создание сущности @smoke', async () => {
     const context = await request.newContext({
         baseURL: 'https://petstore.swagger.io'
     });
