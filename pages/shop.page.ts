@@ -5,8 +5,8 @@ export class ShopPage {
     readonly shopTitle:Locator;
     readonly itemsList:Locator;
     readonly cartButton:Locator;
-    readonly productCard:Locator
-    readonly cartBadge:Locator
+    readonly productCard:Locator;
+    readonly cartBadge:Locator;
 
 constructor (page:Page) {
     this.page=page;

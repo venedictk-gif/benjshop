@@ -1,6 +1,4 @@
 // POM для страницы корзины 
-
-
 import {Page,Locator} from '@playwright/test';
 
 export class CartPage {
