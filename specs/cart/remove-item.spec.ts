@@ -3,6 +3,7 @@ import {CartPage} from '../../pages/cart.page';
 import products from '../../test-data/products.json'
 
 test('Удаление товара из корзины @regression', async ({shopPage, page}) => {
+    await shopPage.goto();
     const cartPage = new CartPage(page);
     await shopPage.addItemToCart(77);
     await page.waitForTimeout(1000);

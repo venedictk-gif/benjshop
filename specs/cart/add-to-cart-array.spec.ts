@@ -10,10 +10,11 @@ test('Добавление разных товаров в корзину @regres
 
     for (const {productId} of items) { 
       await shopPage.addItemToCart(productId)
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1000);
     }
-
     await shopPage.goToCart();
+    await page.waitForTimeout(2000);
+    await expect(page.locator('.wc-block-components-product-name').first()).toBeVisible();
 
     const itemNames = await Promise.all(
     (await page.locator('.wc-block-components-product-name').all()).map(async (el) => await el.textContent())

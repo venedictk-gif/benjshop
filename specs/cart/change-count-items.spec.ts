@@ -7,7 +7,7 @@ test('Именение количества товара @regression', async ({s
     await page.waitForTimeout(1000);
     await shopPage.goToCart();
     const totalBefore = await page.locator('.wc-block-components-totals-footer-item-tax-value').textContent()
-    await cartPage.cartItemCount.fill('3');
+    await cartPage.cartItemCount.first().fill('3');
     await page.waitForTimeout(2000);
     const totalAfter = await page.locator('.wc-block-components-totals-footer-item-tax-value').textContent();
     expect(totalAfter).not.toBe(totalBefore);

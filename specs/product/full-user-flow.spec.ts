@@ -3,7 +3,7 @@ import {ProductPage} from '../../pages/product.page';
 import {CheckoutPage} from '../../pages/checkout.page';
 import products from '../../test-data/products.json'
 
-test('Проверка страницы товара @smoke', async ({shopPage,page})=> {
+test('Проверка оформления и покупки товара ui @smoke', async ({shopPage,page})=> {
     const productPage = new ProductPage(page);
     const checkoutPage = new CheckoutPage(page);
     await shopPage.open(77)

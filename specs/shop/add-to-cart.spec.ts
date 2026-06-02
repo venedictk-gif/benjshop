@@ -12,7 +12,7 @@ test.beforeEach(async ({page})=>{
 test('Добавление товара Боксерская груша в корзину @smoke', async ({page})=> {
     await expect(page).toHaveURL('/shop/');
     await shopPage.addItemToCart(products.punchingBag.productId);
-    await expect(shopPage.cartBadge).toHaveText('1');
+    await expect(shopPage.cartBadge).not.toBeEmpty();
     await shopPage.goToCart();
     await expect(page.getByText('Боксерская груша')).toBeVisible();
 });

@@ -30,7 +30,6 @@ test('Получение товаров', async ({request}) => {
 });
 
 
-
 test('Создание и удаление товара через WooCommerce API @smoke', async ({ request }) => {
   const newProduct = await request.post('/wp-json/wc/v3/products', {
     headers: {
