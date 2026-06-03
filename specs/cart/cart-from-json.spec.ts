@@ -1,3 +1,6 @@
+/*
+Проходит циклом по товарам и для каждого проверяет добавление в корзину.
+*/
 import { test, expect } from '../../fixtures/shop.fixture';
 import productsToAdd from '../../test-data/products-to-add.json';
 

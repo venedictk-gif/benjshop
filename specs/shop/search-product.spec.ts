@@ -1,6 +1,6 @@
 import {test,expect} from '../../fixtures/shop.fixture'
 
-test('Поиск товара @regression', async ({shopPage,page})=>{
+test('Поиск товара названию "Бокс" @regression', async ({shopPage,page})=>{
     await expect(page).toHaveURL(/shop/);
     await page.locator('#wp-block-search__input-3').fill('Бокс');
     await page.getByRole('button',{name:'Поиск'}).click();

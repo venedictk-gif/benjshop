@@ -7,7 +7,6 @@ test('Создание заказа', async ({request})=>{
       'Authorization': getAuthHeader(),
     }
   });
-  
   console.log('Status:', newOrder.status());
   const body = await newOrder.json();
   console.log('Body:', body);

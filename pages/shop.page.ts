@@ -7,6 +7,8 @@ export class ShopPage {
     readonly cartButton:Locator;
     readonly productCard:Locator;
     readonly cartBadge:Locator;
+    readonly searchInput:Locator;
+    readonly searchButton:Locator;
 
 constructor (page:Page) {
     this.page=page;
@@ -15,6 +17,8 @@ constructor (page:Page) {
     this.cartButton = page.getByText('Корзина').first();
     this.productCard = page.locator('.wc-block-product');
     this.cartBadge = page.locator('.wc-block-mini-cart__badge');
+    this.searchInput = page.getByPlaceholder('Искать товары…');
+    this.searchButton = page.locator('.wp-block-search__button');
 }   
 async goto(): Promise<void> {
     await this.page.goto('https://localhost/shop/');

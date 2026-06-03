@@ -1,5 +1,5 @@
-/*E2E-тест (API + UI)
-Создать товар через WooCommerce API → открыть его в магазине через UI → добавить в корзину → оформить заказ → через API проверить, что заказ появился в системе со статусом "processing".
+/*
+Создать товар через API → открыть его в магазине через UI → добавить в корзину → оформить заказ → через API проверить, что заказ появился в системе со статусом "processing".
 */
 import {test,expect} from '../../fixtures/shop.fixture';
 import { CartPage } from '../../pages/cart.page';
@@ -7,8 +7,9 @@ import { CheckoutPage } from '../../pages/checkout.page';
 import { ProductPage } from '../../pages/product.page';
 import { LoginPage } from '../../pages/login.page';
 import { getAuthHeader } from '../../utils/api';
+import users from '../../test-data/users.json'
 
-test('Full flow api + ui @smoke', async ({request,shopPage,page, context})=> {
+test('Full flow api + ui', async ({request,shopPage,page, context})=> {
     const random = Math.floor(Math.random() * 100000);
     const username = `user${random}`;
     const email = `user${random}@mail.ru`;
@@ -23,7 +24,7 @@ test('Full flow api + ui @smoke', async ({request,shopPage,page, context})=> {
     last_name: "Freid111",
     role: 'user',
     username: username,
-    password: "Zigmund67!1",
+    password: users.zigmund.password,
     confirm_password: "Zigmund67!",
     },
   });
@@ -33,7 +34,7 @@ test('Full flow api + ui @smoke', async ({request,shopPage,page, context})=> {
     expect(body0).toHaveProperty('id');
     const loginPage=new LoginPage(page);
     await loginPage.goto();
-    await loginPage.login(email,"Zigmund67!1");
+    await loginPage.login(email,users.zigmund.password);
     const cartPage = new CartPage(page);
     const checkoutPage = new CheckoutPage(page);
     const productPage = new ProductPage(page);
@@ -42,11 +43,11 @@ test('Full flow api + ui @smoke', async ({request,shopPage,page, context})=> {
             'Authorization':getAuthHeader()
         },
         data:{
-            name: 'Теннисные ракетки',
+            name: 'Абв',
             regular_price: '5999',
             type: 'simple',
-            description: 'Ракетки для игры в теннис',
-            short_description: 'Ракетки',
+            description: 'Абв',
+            short_description: 'Абв',
         },
     });
     const body = await newProduct.json();
@@ -54,7 +55,7 @@ test('Full flow api + ui @smoke', async ({request,shopPage,page, context})=> {
     expect(body).toHaveProperty('id');
     expect(newProduct.status()).toBeTruthy();
     await page.goto('https://localhost/shop')
-    await page.getByRole('link',{name:'Теннисные ракетки'}).first().click();
+    await page.getByRole('link',{name:'Абв'}).first().click();
     await productPage.addItemToCart();
     await page.getByRole('link',{name:'Корзина'}).click();
     await cartPage.goToCheckout();

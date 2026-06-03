@@ -1,3 +1,7 @@
+/*
+Добавить 3 товара в корзину через цикл for...of с массивом productIds.
+Затем перейти в корзину и проверить через Promise.all + .map, что все названия товаров отображаются
+*/
 import {test,expect} from '../../fixtures/shop.fixture'
 import products from '../../test-data/products.json'
 test('Добавление разных товаров в корзину @regression', async ({shopPage,page}) => {

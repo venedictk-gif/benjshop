@@ -7,13 +7,13 @@ test('Удаление товара из корзины @regression', async ({sh
     const cartPage = new CartPage(page);
     await shopPage.addItemToCart(77);
     await page.waitForTimeout(1000);
-    await shopPage.addItemToCart(78);
+    await shopPage.addItemToCart(79);
     await page.waitForTimeout(1000);
     await shopPage.goToCart();
     await expect(cartPage.cartItems).toHaveCount(2);
     await cartPage.removeItem(products.punchingBag.name);
     await expect(cartPage.cartItems).toHaveCount(1);
     await page.waitForTimeout(1000);
-    await cartPage.removeItem(products.soccerBall.name);
+    await cartPage.removeItem(products.boxingGloves.name);
     await expect(cartPage.cartItems).toHaveCount(0);
 });
