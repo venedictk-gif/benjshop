@@ -5,6 +5,7 @@ export class ShopPage {
     readonly shopTitle:Locator;
     readonly itemsList:Locator;
     readonly cartButton:Locator;
+    readonly miniCartButton:Locator;
     readonly productCard:Locator;
     readonly cartBadge:Locator;
     readonly searchInput:Locator;
@@ -15,6 +16,7 @@ constructor (page:Page) {
     this.shopTitle = page.getByRole('heading', {name: 'Магазин'});
     this.itemsList = page.locator('[data-block-name="woocommerce/product-template"]');
     this.cartButton = page.getByText('Корзина').first();
+    this.miniCartButton = page.locator('.wc-block-mini-cart__button');
     this.productCard = page.locator('.wc-block-product');
     this.cartBadge = page.locator('.wc-block-mini-cart__badge');
     this.searchInput = page.getByPlaceholder('Искать товары…');

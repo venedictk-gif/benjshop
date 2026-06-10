@@ -1,6 +1,6 @@
 import {test,expect} from '../../fixtures/shop.fixture'
 
-test('Мок списка товаров', async({shopPage,page})=>{
+test('Мок списка товаров, проверка, отсутствия товара при получении 500', async({shopPage,page})=>{
     await page.route('https://localhost/wp-json/wc/store/v1/batch', async route =>{
         const json = 
         [
@@ -19,10 +19,38 @@ test('Мок списка товаров', async({shopPage,page})=>{
     await shopPage.addItemToCart(77);
     await shopPage.goToCart();
     await expect(page.getByText('Боксерская груша')).not.toBeVisible();
-    await page.screenshot({ path: 'error.png', fullPage: true });
 });
 
+test('Мок 404 при добавлении в корзину', async ({ shopPage, page }) => {
+  await page.route('https://localhost/wp-json/wc/store/v1/batch', async route => {
+    await route.fulfill({ status: 404 });
+  });
+  await shopPage.addItemToCart(77);
+  await shopPage.goToCart();
+  await expect(page.getByText('Боксерская груша')).not.toBeVisible();
+});
 
-
-    //await page.goto('https://localhost/wp-json/wc/store/v1/batch')
-    //await expect(page.getByText('Internal Server Error')).toBeVisible();
+test('Мок 503 при добавлении в корзину', async ({ shopPage, page }) => {
+  await page.route('https://localhost/wp-json/wc/store/v1/batch', async route => {
+    await route.fulfill({ status: 503 });
+  });
+  await shopPage.addItemToCart(77);
+  await shopPage.goToCart();
+  await expect(page.getByText('Боксерская груша')).not.toBeVisible();
+});
+//Три кейса через массив (проверки по статусу ошибки)
+const mockErrors = [
+    {status:404},
+    {status:500},
+    {status:503}
+];
+mockErrors.forEach(({ status }) => {
+  test(`Мок ошибка для каждого ${status}`, async ({ shopPage, page }) => {
+      await page.route('https://localhost/wp-json/wc/store/v1/batch', async route => {
+    await route.fulfill({status});
+  });
+  await shopPage.addItemToCart(77);
+  await shopPage.goToCart();
+  await expect(page.getByText('Боксерская груша')).not.toBeVisible();
+});
+});

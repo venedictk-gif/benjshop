@@ -4,6 +4,8 @@ export class ProductPage {
     readonly page:Page;
     readonly itemName:Locator;
     readonly itemPrice:Locator;
+    readonly oldPrice:Locator;
+    readonly newPrice:Locator;
     readonly itemDesc:Locator;
     readonly addToCart:Locator;
     readonly countInput:Locator;
@@ -12,6 +14,8 @@ constructor (page:Page){
     this.page=page;
     this.itemName = page.locator('.wp-block-column .wp-block-post-title')
     this.itemPrice = page.locator('.wp-block-column .woocommerce-Price-amount')
+    this.oldPrice = page.locator('del .woocommerce-Price-amount');
+    this.newPrice  = page.locator('ins .woocommerce-Price-amount');
     this.itemDesc = page.locator('.woocommerce-Tabs-panel--description');
     this.addToCart = page.locator('.single_add_to_cart_button');
     this.countInput = page.locator('.wp-block-column .input-text');

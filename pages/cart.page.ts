@@ -8,6 +8,7 @@ export class CartPage {
     readonly cartTotalPrice:Locator;
     readonly cartItemCount:Locator;
     readonly removeButton:Locator;
+    readonly quantityPlus:Locator;
     readonly checkoutButton:Locator;
 
 
@@ -18,6 +19,7 @@ constructor (page:Page){
     this.cartTotalPrice=page.locator('.wc-block-components-totals-footer-item-tax-value');
     this.cartItemCount=page.locator('.wc-block-components-quantity-selector__input');
     this.removeButton=page.locator('.wc-block-cart-item__remove-link');
+    this.quantityPlus = page.locator('.wc-block-components-quantity-selector__button wc-block-components-quantity-selector__button--plus');
     this.checkoutButton=page.getByText('Перейти к оформлению заказа');
 }
 async getItemCount(): Promise<number> {
