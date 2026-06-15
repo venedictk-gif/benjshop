@@ -9,6 +9,9 @@ export class ProductPage {
     readonly itemDesc:Locator;
     readonly addToCart:Locator;
     readonly countInput:Locator;
+    readonly variationPrice:Locator;
+    readonly reviews:Locator;
+    readonly comment:Locator;
 
 constructor (page:Page){
     this.page=page;
@@ -19,6 +22,9 @@ constructor (page:Page){
     this.itemDesc = page.locator('.woocommerce-Tabs-panel--description');
     this.addToCart = page.locator('.single_add_to_cart_button');
     this.countInput = page.locator('.wp-block-column .input-text');
+    this.variationPrice = page.locator('.woocommerce-variation-price .woocommerce-Price-amount');
+    this.reviews = page.getByRole('tab', { name: 'Отзывы (0)' })
+    this.comment = page.locator('#comment')
 }
 async goto(productName:string): Promise<void> {
     await this.page.goto(`https://localhost/shop/${productName}`)

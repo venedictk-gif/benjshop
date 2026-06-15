@@ -10,6 +10,7 @@ export class ShopPage {
     readonly cartBadge:Locator;
     readonly searchInput:Locator;
     readonly searchButton:Locator;
+    readonly orderByDropDown:Locator;
 
 constructor (page:Page) {
     this.page=page;
@@ -21,6 +22,7 @@ constructor (page:Page) {
     this.cartBadge = page.locator('.wc-block-mini-cart__badge');
     this.searchInput = page.getByPlaceholder('Искать товары…');
     this.searchButton = page.locator('.wp-block-search__button');
+    this.orderByDropDown = page.locator('.orderby')
 }   
 async goto(): Promise<void> {
     await this.page.goto('https://localhost/shop/');
@@ -40,6 +42,13 @@ async getProductPrice(productId: number): Promise<string> {
 }
 async goToCart(): Promise<void>{
     await this.cartButton.click();
+}
+async orderBy(option:string): Promise<void>{
+    await this.orderByDropDown.selectOption(option);
+}
+async searchItem(itemName:string): Promise<void>{
+    await this.searchInput.fill(itemName);
+    await this.searchButton.click();
 }
 }
 
