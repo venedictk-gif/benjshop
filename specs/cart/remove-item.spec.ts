@@ -2,6 +2,18 @@ import {test,expect} from '../../fixtures/shop.fixture';
 import {CartPage} from '../../pages/cart.page';
 import products from '../../test-data/products.json'
 
+//Очистка корзины перед тестами
+test.beforeEach(async ({shopPage,page }) => {
+  await page.goto('/cart/');
+  const removeButtons = page.locator('.wc-block-cart-item__remove-link');
+  for (let i = 0; i < 10; i++) {
+    if (await removeButtons.count() === 0) break;
+    await removeButtons.first().click();
+    await page.waitForTimeout(500);
+  }
+  await shopPage.goto();
+});
+
 test('Удаление товара из корзины @regression', async ({shopPage, page}) => {
     const cartPage = new CartPage(page);
     await shopPage.addItemToCart(products.punchingBag.productId);
